@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me | Software and Platform Engineer</title>
+    <title>About Me | Software & Platform Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -60,13 +60,6 @@
             background: var(--gradient-mesh);
             pointer-events: none;
             z-index: -1;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 80px 40px;
-            position: relative;
         }
 
         .header {
@@ -126,11 +119,8 @@
         }
 
         @media (max-width: 768px) {
-            .content-grid {
+            .skill-categories {
                 grid-template-columns: 1fr;
-            }
-            .container {
-                padding: 40px 20px;
             }
         }
 
@@ -296,59 +286,6 @@
             color: var(--accent-primary);
         }
 
-        .footer-cta {
-            margin-top: 80px;
-            text-align: center;
-            animation: fadeSlideUp 0.8s ease-out 0.8s both;
-        }
-
-        .cta-text {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 24px;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .cta-button {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            padding: 14px 28px;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .cta-button.primary {
-            background: var(--accent-primary);
-            color: var(--bg-primary);
-            border: none;
-        }
-
-        .cta-button.primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px -10px rgba(0, 212, 170, 0.5);
-        }
-
-        .cta-button.secondary {
-            background: transparent;
-            color: var(--text-primary);
-            border: 1px solid var(--border-color);
-        }
-
-        .cta-button.secondary:hover {
-            border-color: var(--text-primary);
-        }
-
         @keyframes fadeSlideUp {
             from {
                 opacity: 0;
@@ -368,16 +305,109 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
+
+        .top-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(10, 10, 11, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 40px;
+        }
+
+        .banner-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .banner-name {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: 0.02em;
+        }
+
+        .banner-links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .banner-link {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .banner-link:hover {
+            color: var(--accent-primary);
+        }
+
+        .banner-divider {
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 140px 40px 80px;
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 120px 20px 40px;
+            }
+            .top-banner {
+                padding: 14px 20px;
+            }
+            .banner-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            .banner-links {
+                gap: 12px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="noise-overlay"></div>
     <div class="mesh-gradient"></div>
 
+    <nav class="top-banner">
+        <div class="banner-content">
+            <div class="banner-name">Brandon Recinos</div>
+            <div class="banner-links">
+                <a href="mailto:brec212@gmail.com" class="banner-link">brec212@gmail.com</a>
+                <span class="banner-divider">/</span>
+                <a href="https://github.com/brec" target="_blank" rel="noopener noreferrer" class="banner-link">github.com/brec</a>
+            </div>
+        </div>
+    </nav>
+
     <main class="container">
         <header class="header">
             <div class="terminal-tag">~/about<span class="cursor-blink">_</span></div>
-            <h1 class="title">Software Engineer</h1>
+            <h1 class="title">Software & Platform Engineer</h1>
             <p class="subtitle">Building resilient infrastructure at scale</p>
         </header>
 
@@ -400,11 +430,11 @@
                     <div class="stat-label">Years Experience</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">∞</div>
-                    <div class="stat-label">Containers Orchestrated</div>
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Cloud Platforms</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">99.99%</div>
+                    <div class="stat-number">99.9%</div>
                     <div class="stat-label">Uptime Obsession</div>
                 </div>
             </div>
@@ -468,21 +498,4 @@
                     </div>
                 </div>
             </div>
-        </section>
-
-        <footer class="footer-cta">
-            <p class="cta-text">// interested in working together?</p>
-            <div class="cta-buttons">
-                <a href="mailto:brec212@gmail.com" class="cta-button primary">
-                    <span>Get in Touch</span>
-                    <span>→</span>
-                </a>
-                <a href="#projects" class="cta-button secondary">
-                    <span>View Projects</span>
-                </a>
-            </div>
-        </footer>
-    </main>
-</body>
-</html>
-
+<
