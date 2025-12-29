@@ -124,8 +124,33 @@
             }
         }
 
-        .about-text {
+        .about-section {
+            display: flex;
+            gap: 32px;
+            align-items: flex-start;
             animation: fadeSlideUp 0.8s ease-out 0.2s both;
+        }
+
+        .profile-image-container {
+            flex-shrink: 0;
+        }
+
+        .profile-image {
+            width: 160px;
+            height: 160px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .profile-image:hover {
+            border-color: var(--accent-primary);
+            box-shadow: 0 10px 30px -10px rgba(0, 212, 170, 0.3);
+        }
+
+        .about-text {
+            animation: none;
         }
 
         .about-text p {
@@ -397,7 +422,7 @@
         <div class="banner-content">
             <div class="banner-name">Brandon Recinos</div>
             <div class="banner-links">
-                <a href="mailto:brec212@gmail.com" class="banner-link">brec212@gmail.com</a>
+                <a href="/cdn-cgi/l/email-protection#3e5c4c5b5d0c0f0c7e59535f5752105d5153" class="banner-link"><span class="__cf_email__" data-cfemail="91f3e3f4f2a3a0a3d1f6fcf0f8fdbff2fefc">[email&#160;protected]</span></a>
                 <span class="banner-divider">/</span>
                 <a href="https://github.com/brec" target="_blank" rel="noopener noreferrer" class="banner-link">github.com/brec</a>
             </div>
@@ -412,7 +437,11 @@
         </header>
 
         <div class="content-grid">
-            <div class="about-text">
+            <div class="about-section">
+                <div class="profile-image-container">
+                    <img src="https://avatars.githubusercontent.com/u/802963?s=400&u=04bc159741b48da6724fbf46d6a8949eeca4beb4&v=4" alt="Brandon Recinos" class="profile-image">
+                </div>
+                <div class="about-text">
                 <p>
                     With over <span class="highlight">fourteen years</span> of hands-on experience, I specialize in the intersection of <span class="highlight">DevOps</span>, <span class="highlight">cloud security</span>, and <span class="highlight">Site Reliability Engineering</span>. My work centers on building automated solutions and scalable software that teams can depend on.
                 </p>
@@ -422,6 +451,7 @@
                 <p>
                     Beyond the core platforms, I've developed particular expertise in the Kubernetes ecosystem—orchestrating deployments with <span class="highlight">ArgoCD</span>, implementing observability with <span class="highlight">Prometheus</span> and <span class="highlight">Mimir</span>, and enforcing policy with <span class="highlight">OPA Gatekeeper</span>.
                 </p>
+                </div>
             </div>
 
             <div class="stats-card">
@@ -494,8 +524,3 @@
                         <span class="skill-tag">Prometheus</span>
                         <span class="skill-tag">Mimir</span>
                         <span class="skill-tag">Grafana</span>
-                        <span class="skill-tag">Service Mesh</span>
-                    </div>
-                </div>
-            </div>
-<
