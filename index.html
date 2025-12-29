@@ -1,1 +1,488 @@
-<strong> This is the personal website for Brandon Recinos </strong>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | Software and Platform Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0b;
+            --bg-secondary: #111113;
+            --bg-card: #161618;
+            --text-primary: #e8e8e8;
+            --text-secondary: #8a8a8a;
+            --text-muted: #5a5a5a;
+            --accent-primary: #00d4aa;
+            --accent-secondary: #0099ff;
+            --accent-tertiary: #ff6b35;
+            --border-color: #2a2a2c;
+            --gradient-mesh: radial-gradient(ellipse at 20% 20%, rgba(0, 212, 170, 0.08) 0%, transparent 50%),
+                            radial-gradient(ellipse at 80% 80%, rgba(0, 153, 255, 0.06) 0%, transparent 50%),
+                            radial-gradient(ellipse at 50% 50%, rgba(255, 107, 53, 0.03) 0%, transparent 70%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 1000;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        .mesh-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-mesh);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 40px;
+            position: relative;
+        }
+
+        .header {
+            margin-bottom: 80px;
+            animation: fadeSlideUp 0.8s ease-out;
+        }
+
+        .terminal-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent-primary);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .terminal-tag::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0, 212, 170, 0.4); }
+            50% { opacity: 0.7; box-shadow: 0 0 0 8px rgba(0, 212, 170, 0); }
+        }
+
+        .title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 40px 20px;
+            }
+        }
+
+        .about-text {
+            animation: fadeSlideUp 0.8s ease-out 0.2s both;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            font-weight: 300;
+        }
+
+        .about-text p:first-of-type::first-letter {
+            font-size: 3.5rem;
+            font-weight: 700;
+            float: left;
+            line-height: 1;
+            margin-right: 12px;
+            margin-top: 4px;
+            color: var(--accent-primary);
+        }
+
+        .highlight {
+            color: var(--text-primary);
+            font-weight: 400;
+        }
+
+        .stats-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            animation: fadeSlideUp 0.8s ease-out 0.4s both;
+        }
+
+        .stats-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
+        }
+
+        .stat-item {
+            margin-bottom: 32px;
+        }
+
+        .stat-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .stat-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 8px;
+        }
+
+        .skills-section {
+            animation: fadeSlideUp 0.8s ease-out 0.6s both;
+        }
+
+        .section-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+        }
+
+        .skill-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .skill-category {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -20px rgba(0, 212, 170, 0.15);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .category-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .category-icon.languages { background: rgba(0, 212, 170, 0.15); }
+        .category-icon.cloud { background: rgba(0, 153, 255, 0.15); }
+        .category-icon.kubernetes { background: rgba(255, 107, 53, 0.15); }
+        .category-icon.tools { background: rgba(168, 85, 247, 0.15); }
+
+        .category-name {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            padding: 6px 12px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        .footer-cta {
+            margin-top: 80px;
+            text-align: center;
+            animation: fadeSlideUp 0.8s ease-out 0.8s both;
+        }
+
+        .cta-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cta-button.primary {
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+            border: none;
+        }
+
+        .cta-button.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(0, 212, 170, 0.5);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .cta-button.secondary:hover {
+            border-color: var(--text-primary);
+        }
+
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cursor-blink {
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="noise-overlay"></div>
+    <div class="mesh-gradient"></div>
+
+    <main class="container">
+        <header class="header">
+            <div class="terminal-tag">~/about<span class="cursor-blink">_</span></div>
+            <h1 class="title">Software Engineer</h1>
+            <p class="subtitle">Building resilient infrastructure at scale</p>
+        </header>
+
+        <div class="content-grid">
+            <div class="about-text">
+                <p>
+                    With over <span class="highlight">fourteen years</span> of hands-on experience, I specialize in the intersection of <span class="highlight">DevOps</span>, <span class="highlight">cloud security</span>, and <span class="highlight">Site Reliability Engineering</span>. My work centers on building automated solutions and scalable software that teams can depend on.
+                </p>
+                <p>
+                    I'm deeply invested in multi-cloud architecture, working extensively across <span class="highlight">AWS</span> and <span class="highlight">OCI</span> environments. From Kubernetes platform engineering to IAM security design, I focus on creating infrastructure that's both robust and elegant.
+                </p>
+                <p>
+                    Beyond the core platforms, I've developed particular expertise in the Kubernetes ecosystem—orchestrating deployments with <span class="highlight">ArgoCD</span>, implementing observability with <span class="highlight">Prometheus</span> and <span class="highlight">Mimir</span>, and enforcing policy with <span class="highlight">OPA Gatekeeper</span>.
+                </p>
+            </div>
+
+            <div class="stats-card">
+                <div class="stat-item">
+                    <div class="stat-number">14+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Containers Orchestrated</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99.99%</div>
+                    <div class="stat-label">Uptime Obsession</div>
+                </div>
+            </div>
+        </div>
+
+        <section class="skills-section">
+            <h2 class="section-title">Technical Expertise</h2>
+            <div class="skill-categories">
+                <div class="skill-category">
+                    <div class="category-header">
+                        <div class="category-icon languages">⌘</div>
+                        <span class="category-name">Languages & Build</span>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Go</span>
+                        <span class="skill-tag">Bash</span>
+                        <span class="skill-tag">Makefile</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="category-header">
+                        <div class="category-icon cloud">☁</div>
+                        <span class="category-name">Cloud Platforms</span>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">OCI</span>
+                        <span class="skill-tag">EC2</span>
+                        <span class="skill-tag">RDS</span>
+                        <span class="skill-tag">IAM</span>
+                        <span class="skill-tag">S3</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="category-header">
+                        <div class="category-icon kubernetes">⎈</div>
+                        <span class="category-name">Kubernetes</span>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">EKS</span>
+                        <span class="skill-tag">OKE</span>
+                        <span class="skill-tag">Istio</span>
+                        <span class="skill-tag">ArgoCD</span>
+                        <span class="skill-tag">OPA Gatekeeper</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="category-header">
+                        <div class="category-icon tools">◎</div>
+                        <span class="category-name">Observability</span>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Prometheus</span>
+                        <span class="skill-tag">Mimir</span>
+                        <span class="skill-tag">Grafana</span>
+                        <span class="skill-tag">Service Mesh</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer-cta">
+            <p class="cta-text">// interested in working together?</p>
+            <div class="cta-buttons">
+                <a href="mailto:brec212@gmail.com" class="cta-button primary">
+                    <span>Get in Touch</span>
+                    <span>→</span>
+                </a>
+                <a href="#projects" class="cta-button secondary">
+                    <span>View Projects</span>
+                </a>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>
+
