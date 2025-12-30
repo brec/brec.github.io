@@ -112,13 +112,23 @@
         }
 
         .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
             margin-bottom: 60px;
         }
 
         @media (max-width: 768px) {
+            .about-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .profile-image {
+                width: 140px;
+                height: 140px;
+            }
+            .about-text p:first-of-type::first-letter {
+                float: none;
+                margin-right: 0;
+            }
             .skill-categories {
                 grid-template-columns: 1fr;
             }
@@ -173,50 +183,6 @@
         .highlight {
             color: var(--text-primary);
             font-weight: 400;
-        }
-
-        .stats-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 40px;
-            position: relative;
-            overflow: hidden;
-            animation: fadeSlideUp 0.8s ease-out 0.4s both;
-        }
-
-        .stats-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
-        }
-
-        .stat-item {
-            margin-bottom: 32px;
-        }
-
-        .stat-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .stat-number {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--accent-primary);
-            line-height: 1;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-top: 8px;
         }
 
         .skills-section {
@@ -422,7 +388,7 @@
         <div class="banner-content">
             <div class="banner-name">Brandon Recinos</div>
             <div class="banner-links">
-                <a href="/cdn-cgi/l/email-protection#3e5c4c5b5d0c0f0c7e59535f5752105d5153" class="banner-link"><span class="__cf_email__" data-cfemail="91f3e3f4f2a3a0a3d1f6fcf0f8fdbff2fefc">[email&#160;protected]</span></a>
+                <a href="https://www.linkedin.com/in/recinosb/" target="_blank" rel="noopener noreferrer" class="banner-link">linkedin.com/in/recinosb</a>
                 <span class="banner-divider">/</span>
                 <a href="https://github.com/brec" target="_blank" rel="noopener noreferrer" class="banner-link">github.com/brec</a>
             </div>
@@ -452,22 +418,6 @@
                     Beyond the core platforms, I've developed particular expertise in the Kubernetes ecosystem—orchestrating deployments with <span class="highlight">ArgoCD</span>, implementing observability with <span class="highlight">Prometheus</span> and <span class="highlight">Mimir</span>, and enforcing policy with <span class="highlight">OPA Gatekeeper</span>.
                 </p>
                 </div>
-            </div>
-
-            <div class="stats-card">
-                <div class="stat-item">
-                    <div class="stat-number">14+</div>
-                    <div class="stat-label">Years Experience</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">2</div>
-                    <div class="stat-label">Cloud Platforms</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">99.9%</div>
-                    <div class="stat-label">Uptime Obsession</div>
-                </div>
-            </div>
         </div>
 
         <section class="skills-section">
@@ -524,3 +474,4 @@
                         <span class="skill-tag">Prometheus</span>
                         <span class="skill-tag">Mimir</span>
                         <span class="skill-tag">Grafana</span>
+       
