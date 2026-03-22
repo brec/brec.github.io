@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me | Software & Platform Engineer</title>
+    <meta name="description" content="Portfolio of Brandon Recinos, a Principal Platform Engineer based in Boulder, Colorado specializing in DevOps, Kubernetes, and multi-cloud architecture.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Library for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --bg-primary: #0a0a0b;
@@ -328,28 +331,36 @@
             letter-spacing: 0.02em;
         }
 
+        /* Updated Pill Button CSS */
         .banner-links {
             display: flex;
+            gap: 15px; 
             align-items: center;
-            gap: 16px;
             flex-wrap: wrap;
         }
 
         .banner-link {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.85rem;
-            color: var(--text-secondary);
+            font-weight: 700;
             text-decoration: none;
-            transition: color 0.2s ease;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px; 
         }
 
         .banner-link:hover {
+            background-color: var(--bg-card);
+            border-color: var(--accent-primary);
             color: var(--accent-primary);
-        }
-
-        .banner-divider {
-            color: var(--text-muted);
-            font-family: 'JetBrains Mono', monospace;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 212, 170, 0.1);
         }
 
         .container {
@@ -387,10 +398,14 @@
     <nav class="top-banner">
         <div class="banner-content">
             <div class="banner-name">Brandon Recinos</div>
+            <!-- Updated HTML for Pill Buttons -->
             <div class="banner-links">
-                <a href="https://www.linkedin.com/in/recinosb/" target="_blank" rel="noopener noreferrer" class="banner-link">linkedin.com/in/recinosb</a>
-                <span class="banner-divider">/</span>
-                <a href="https://github.com/brec" target="_blank" rel="noopener noreferrer" class="banner-link">github.com/brec</a>
+                <a href="https://www.linkedin.com/in/recinosb/" target="_blank" rel="noopener noreferrer" class="banner-link">
+                    <i class="fab fa-linkedin"></i> linkedin.com/in/recinosb
+                </a>
+                <a href="https://github.com/brec" target="_blank" rel="noopener noreferrer" class="banner-link">
+                    <i class="fab fa-github"></i> github.com/brec
+                </a>
             </div>
         </div>
     </nav>
@@ -408,16 +423,17 @@
                     <img src="https://avatars.githubusercontent.com/u/802963?s=400&u=04bc159741b48da6724fbf46d6a8949eeca4beb4&v=4" alt="Brandon Recinos" class="profile-image">
                 </div>
                 <div class="about-text">
-                <p>
-                    With over <span class="highlight">fourteen years</span> of hands-on experience, I specialize in the intersection of <span class="highlight">DevOps</span>, <span class="highlight">cloud security</span>, and <span class="highlight">Site Reliability Engineering</span>. My work centers on building automated solutions and scalable software that teams can depend on.
-                </p>
-                <p>
-                    I'm deeply invested in multi-cloud architecture, working extensively across <span class="highlight">AWS</span> and <span class="highlight">OCI</span> environments. From Kubernetes platform engineering to IAM security design, I focus on creating infrastructure that's both robust and elegant.
-                </p>
-                <p>
-                    Beyond the core platforms, I've developed particular expertise in the Kubernetes ecosystem—orchestrating deployments with <span class="highlight">ArgoCD</span>, implementing observability with <span class="highlight">Prometheus</span> and <span class="highlight">Mimir</span>, and enforcing policy with <span class="highlight">OPA Gatekeeper</span>.
-                </p>
+                    <p>
+                        With <span class="highlight">fifteen years</span> of engineering experience, I specialize in the intersection of <span class="highlight">DevOps</span>, <span class="highlight">cloud security</span>, and <span class="highlight">Site Reliability Engineering</span>. As a Principal Platform Engineer, my work centers on building automated, scalable multi-cloud architectures across <span class="highlight">AWS</span> and <span class="highlight">OCI</span> environments.
+                    </p>
+                    <p>
+                        I am a Certified Kubernetes Administrator (CKA) who enjoys diving deep into the Kubernetes ecosystem. Whether I am orchestrating global deployments with <span class="highlight">ArgoCD</span>, enforcing guardrails with <span class="highlight">OPA Gatekeeper</span>, or writing custom controllers in <span class="highlight">Go</span> and <span class="highlight">Python</span>, I focus on creating robust infrastructure.
+                    </p>
+                    <p>
+                        My passion for platform engineering extends beyond the enterprise. When I'm not using <span class="highlight">Terraform</span> to build comprehensive Infrastructure as Code (IaC) environments or designing secure service meshes, you can usually find me tinkering with my <span class="highlight">Raspberry Pi K3s homelab</span>.
+                    </p>
                 </div>
+            </div>
         </div>
 
         <section class="skills-section">
@@ -474,4 +490,10 @@
                         <span class="skill-tag">Prometheus</span>
                         <span class="skill-tag">Mimir</span>
                         <span class="skill-tag">Grafana</span>
-       
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
